@@ -12,7 +12,11 @@ public class MemberApp {
 //        AppConfig appConfig =  new AppConfig();
 //        MemberService memberService = appConfig.memberService();
 
-        //AppConfig에 있는 Bean 전부 등록처리
+        /**
+         * 스프링 컨테이너 생성 <빈 이름, 빈 객체> 형태의 Map을 만든다
+         * 빈 이름은 항상 다른 이름을 부여. 같은 이름 사용시, 다른 빈이 무시되거나 기존 빈을 덮거나 설정에 따라 오류 발생
+         * AppConfig에 있는 Bean 전부 등록처리
+         */
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 

@@ -14,6 +14,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    /**
+     * 빈 이름은 메서드 이름을 사용
+     * @Bean(name="memberSer")과 같이 빈 이름 직접 설정 가능
+     */
     @Bean
     public MemberService memberService(){
         return new MemberServiceImpl(memberRepository());
