@@ -40,7 +40,7 @@ public class AppConfig {
 
     /**
      * 빈 이름은 메서드 이름을 사용
-     * @Bean(name="memberSer")과 같이 빈 이름 직접 설정 가능
+     * 법@Bean(name="memberSer")과 같이 빈 이름 직접 설정 가능
      */
     @Bean
     public MemberService memberService(){
@@ -57,7 +57,8 @@ public class AppConfig {
     @Bean
     public OrderService orderService(){
         System.out.println("call AppConfig.orderService");
-        return new OrderServiceImpl(memberRepository(), discountPolicy());
+        //return new OrderServiceImpl(memberRepository(), discountPolicy());
+        return null;
     }
 
     @Bean
