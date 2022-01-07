@@ -24,8 +24,8 @@ public class ComponentFilterAppConfigTest {
         assertThat(beanA).isNotNull();
 
         //없기 때문에 실패
-        BeanB beanB = ac.getBean("beanB", BeanB.class);
-        assertThat(beanB).isNotNull();
+        /*BeanB beanB = ac.getBean("beanB", BeanB.class);
+        assertThat(beanB).isNotNull();*/
 
         //성공하고 싶으면 throw error
         assertThrows(NoSuchBeanDefinitionException.class, ()->ac.getBean("beanB",BeanB.class));

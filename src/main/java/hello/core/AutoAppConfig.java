@@ -14,8 +14,9 @@ import org.springframework.context.annotation.FilterType;
 )      //스프링빈을 자동적으로 끌어올린다
 public class AutoAppConfig {
 
-    @Bean(name = "memoryMemberRepository")
+    //추가로 수동등록 시도
+    /*@Bean(name = "memoryMemberRepository")
     MemberRepository memberRepository(){
         return new MemoryMemberRepository();
-    }
+    }*/
 }

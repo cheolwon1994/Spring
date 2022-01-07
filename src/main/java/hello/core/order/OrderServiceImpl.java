@@ -14,7 +14,7 @@ public class OrderServiceImpl implements OrderService{
 
     /**
      * 의존관계 주입 방법
-     * 1. 생성자 주입
+     * 1. 생성자 주입 -> 프레임워크에 의존X, 순수한 자바 언어의 특징을 잘 살리는 방법
      * 2. 수정자 주입
      * 3. 필드 주입
      * 4. 일반 메서드 주입
@@ -37,9 +37,9 @@ public class OrderServiceImpl implements OrderService{
         }
     */
 
-    /*
-    2. 수정자 주입
-    @Autowired(required=false)      //기본동작) 주입할 대상이 없으면 오류 발생. 여기선 DiscountPolicy. 따라서, required=false를 붙인다
+
+    //2. 수정자 주입
+    /*@Autowired(required=false)      //기본동작) 주입할 대상이 없으면 오류 발생. 여기선 DiscountPolicy. 따라서, required=false를 붙인다
     public void setDiscountPolicy(DiscountPolicy discountPolicy) {
         this.discountPolicy = discountPolicy;
     }
@@ -49,14 +49,13 @@ public class OrderServiceImpl implements OrderService{
         this.memberRepository = memberRepository;
     }*/
 
-    /*
-    1. 생성자 주입
+
+    //1. 생성자 주입
     @Autowired      //생성자가 1개 일때는 자동적으로 @Autowired가 설정된다
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        System.out.println("1. OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }*/
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
