@@ -6,24 +6,30 @@ import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     /**
      * 의존관계 주입 방법
-     * 1. 생성자 주입 -> 프레임워크에 의존X, 순수한 자바 언어의 특징을 잘 살리는 방법
+     * 1. 생성자 주입 -> 프레임워크에 의존X, 순수한 자바 언어의 특징을 잘 살리는 방사
      * 2. 수정자 주입
      * 3. 필드 주입
      * 4. 일반 메서드 주입
      */
 
-    //3. 필드 주입 @Autowired 직접 선언
-    // 단점: 1. 보기엔 편리해보이지만 외부에서 접근이 불가능하다. MemberRepository와 DiscountPolicy를 세팅해줄 set 함수가 추가로 필요하다. 즉, DI 프레임워크가 없으면 아무것도 할 수 없
+    /*3. 필드 주입 @Autowired 직접 선언
+    / 단점: 1. 보기엔 편리해보이지만 외부에서 접근이 불가능하다. MemberRepository와 DiscountPolicy를 세팅해줄 set 함수가 추가로 필요하다. 즉, DI 프레임워크가 없으면 아무것도 할 수 없다
     @Autowired private MemberRepository memberRepository;
     @Autowired private DiscountPolicy discountPolicy;
+     */
+
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
     /*
     4. 일반 메서드 주입
@@ -51,11 +57,13 @@ public class OrderServiceImpl implements OrderService{
 
 
     //1. 생성자 주입
+    /*
+    Lombok의 @RequiredArgsConstructor이 final로 선언된 bean들을 주입해준다
     @Autowired      //생성자가 1개 일때는 자동적으로 @Autowired가 설정된다
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }
+    }*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
